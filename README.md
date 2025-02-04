@@ -1,112 +1,166 @@
-# 🕷️ Desafio Chibas - Web Scraping com Puppeteer
+# 🚀 Desafio Chibas - API de Estatísticas Financeiras
 
-## 📝 Descrição
-Bem-vindo Samuca ao seu **segundo** Desafio Chibas🔥💵🏠! Este projeto é um web scraper simples usando a biblioteca Puppeteer. O scraper vai te ajudar a aprender sobre automação de navegadores e extração de dados da web, focando em informações sobre Bitcoin e o dólar.
+## 🔥 E aí Samuca!
+Chegou seu **terceiro** Desafio Chibas! Dessa vez vamos mergulhar no mundo das APIs REST e fazer uma aplicação MUITO MASSA de processamento de transações financeiras! 
 
-## 🗓️ Data de Entrega
-06 de outubro
+## 📅 Data de Entrega
+[Data a definir]
 
 ## ⚠️ ATENÇÃO! EXTREMAMENTE IMPORTANTE! ⚠️
 
-# UM DEV DEVE LER DOCUMENTAÇÃO E NÃO ENTRAR NO TUTORIAL HELL
-# NÃO VEJA TUTORIAIS DO YOUTUBE
-# APENAS DOCUMENTAÇÃO E STACKOVERFLOW
+# DOCUMENTAÇÃO É SEU MELHOR AMIGO
+# NÃO CAIA NO TUTORIAL HELL
+# USE A DOCUMENTAÇÃO OFICIAL DO SPRING E STACKOVERFLOW
 
-## ✨ O que você vai fazer
-- 🌐 Criar um scraper que extrai informações sobre Bitcoin e o dólar de sites financeiros
-- 📊 Processar e organizar os dados coletados
-- 🖥️ Exibir as informações em uma página HTML simples
+## 🎯 O Desafio
 
-## 📋 O que você precisa
-- Node.js (versão 14 ou mais nova)
-- npm (geralmente vem junto com o Node.js)
-- Vontade de aprender e pesquisar!
+Samuca, sua missão (e você vai aceitar!) é criar uma API que:
+1. Recebe transações financeiras
+2. Calcula estatísticas em tempo real
+3. Permite limpar os dados quando necessário
 
-## 🛠️ Como começar
+O mais legal? Você vai fazer tudo em memória, sem banco de dados! 🧠
 
-1. Primeiro, crie uma pasta para o projeto e entre nela:
-   ```bash
-   mkdir meu-scraper-financeiro
-   cd meu-scraper-financeiro
-   ```
+## 🛠️ Ferramentas que você vai usar
 
-2. Instale as coisas que o projeto precisa:
-   ```bash
-   npm init -y
-   npm install puppeteer
-   ```
+- Java 8+ ou Kotlin (você escolhe!)
+- Spring Boot (framework ANIMAL pra criar APIs)
+- Maven ou Gradle (gerenciador de dependências)
+- Seu editor favorito
+- Muito café ☕
 
-## ⚙️ Configurando o scraper
+## 📝 Como Começar
 
-1. Crie um arquivo chamado `index.js` e coloque esse código básico nele:
+1. Primeiro, vai no [Spring Initializr](https://start.spring.io/) e cria seu projeto:
+   - Escolhe Maven ou Gradle
+   - Java ou Kotlin
+   - Spring Boot (última versão)
+   - Adiciona a dependência "Spring Web"
 
-   ```javascript
-   const puppeteer = require('puppeteer');
-   const fs = require('fs');
+2. Baixa o projeto e BORA CODAR! 🚀
 
-   async function scrapeCryptoData() {
-       const browser = await puppeteer.launch();
-       const page = await browser.newPage();
-       await page.goto('https://www.coingecko.com/pt/moedas/bitcoin');
+## 📋 Regras do Projeto
 
-       // Aqui é onde você vai adicionar a lógica para extrair dados do Bitcoin
+### Regras Técnicas Importantes! 🔧
 
-       await browser.close();
-   }
+1. **GitHub/GitLab:**
+   - Criar repositório público
+   - NÃO fazer fork de outros projetos
+   - Mínimo 3 commits (1 por endpoint)
+   - Usar sempre o mesmo usuário nos commits
 
-   async function scrapeDollarData() {
-       const browser = await puppeteer.launch();
-       const page = await browser.newPage();
-       await page.goto('https://www.investing.com/currencies/usd-brl');
+2. **Código:**
+   - Usar EXATAMENTE os nomes de endpoints descritos
+   - Trabalhar só com JSON
+   - NADA de banco de dados (nem H2, MySQL, PostgreSQL...)
+   - NADA de cache (nem Redis, Memcached...)
+   - Guardar tudo em memória!
 
-       // Aqui é onde você vai adicionar a lógica para extrair dados do dólar
+## 🎮 Os Endpoints que você precisa criar
 
-       await browser.close();
-   }
-
-   async function main() {
-       await scrapeCryptoData();
-       await scrapeDollarData();
-   }
-
-   main();
-   ```
-
-2. Rode o scraper:
-   ```bash
-   node index.js
-   ```
-
-## 📚 Documentação
-
-A habilidade mais importante de um desenvolvedor é saber pesquisar e ler documentações. Leia a documentação oficial do Puppeteer. É lá que você vai encontrar todas as informações necessárias para desenvolver seu scraper:
-
-[Documentação do Puppeteer](https://pptr.dev/)
-
-## 🧪 Seu desafio
-Agora é com você! Use a documentação para adicionar funcionalidades ao seu scraper. Algumas ideias:
-
-- Extrair o preço atual do Bitcoin em reais
-- Obter a variação percentual do Bitcoin nas últimas 24 horas
-- Coletar a cotação atual do dólar em reais
-- Obter a variação do dólar no dia
-- Salvar os dados extraídos em um arquivo JSON
-- Criar uma página HTML simples para exibir os dados coletados
-
-Exemplo de como os dados poderiam ser estruturados:
-
+### 1. POST /transacao
+Recebe transações assim:
 ```json
 {
-  "bitcoin": {
-    "preco": "R$ 150.000,00",
-    "variacao24h": "+2.5%"
-  },
-  "dolar": {
-    "cotacao": "R$ 5,20",
-    "variacaoDia": "-0.3%"
-  },
-  "dataAtualizacao": "2023-09-25T14:30:00Z"
+    "valor": 123.45,
+    "dataHora": "2020-08-07T12:34:56.789-03:00"
 }
 ```
 
-Lembre-se: a chave para o sucesso é a prática e a pesquisa. Boa sorte e divirta-se aprendendo!
+#### Regras da Transação! ⚠️
+Só aceita transação se:
+- Tiver `valor` e `dataHora` preenchidos
+- NÃO for no futuro
+- Tiver acontecido em qualquer momento do passado
+- NÃO tiver valor negativo
+- Valor for maior ou igual a 0
+
+#### Respostas possíveis:
+- `201 Created`: Transação aceita! 🎉 (sem corpo)
+- `422 Unprocessable Entity`: Transação inválida ❌ (sem corpo)
+- `400 Bad Request`: JSON mal formatado 🚫 (sem corpo)
+
+### 2. DELETE /transacao
+- Limpa TODAS as transações da memória
+- Retorna `200 OK` quando der certo (sem corpo)
+
+### 3. GET /estatistica
+Retorna estatísticas dos últimos 60 segundos:
+```json
+{
+    "count": 10,    // quantidade de transações
+    "sum": 1234.56, // soma total
+    "avg": 123.456, // média
+    "min": 12.34,   // menor valor
+    "max": 123.56   // maior valor
+}
+```
+
+#### Detalhes Importantes! 🔍
+- Só considera transações dos últimos 60 segundos
+- Se não tiver transações, TODOS os valores devem ser `0`
+- Retorna `200 OK` com o JSON das estatísticas
+
+## 🌟 Bônus (Quer impressionar? Faz esses aqui!)
+
+1. **Testes Automatizados:** 
+   - Testes unitários
+   - Testes funcionais
+   - Testa os casos de erro também!
+
+2. **Containerização:** 
+   - Cria um Dockerfile
+   - Não precisa publicar o container
+
+3. **Logs:** 
+   - Mostra o que tá acontecendo
+   - Ajuda a debugar problemas
+
+4. **Observabilidade:** 
+   - Endpoint de healthcheck
+   - Monitora a saúde da API
+
+5. **Performance:** 
+   - Otimiza o cálculo das estatísticas
+   - Mede o tempo de processamento
+
+6. **Tratamento de Erros:** 
+   - Mensagens de erro claras
+   - Usa as ferramentas do Spring Boot
+
+7. **Documentação da API:** 
+   - Usa Swagger ou similar
+   - Documenta todos os endpoints
+
+8. **Documentação do Sistema:** 
+   - Como buildar
+   - Como executar
+   - Requisitos do sistema
+
+9. **Configurações:** 
+   - Deixa o tempo de 60 segundos configurável
+   - Outras configurações úteis
+
+## 💡 Super Dicas
+
+1. Use `OffsetDateTime` pra trabalhar com as datas
+2. A classe `DoubleSummaryStatistics` é sua amiga!
+3. Testa TODOS os casos de erro possíveis
+4. Documenta TUDO que puder
+5. Código limpo = código feliz 😊
+
+## 📚 Links Úteis
+
+- [Spring Boot - Documentação Oficial](https://docs.spring.io/spring-boot/docs/current/reference/html/)
+- [Spring Web MVC](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html)
+- [Java Time API](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/spring-boot)
+
+## 🤔 Precisa de ajuda?
+
+- Consulte a documentação
+- Use o Stack Overflow
+- Peça ajuda pro time
+- MAS NÃO CAIA NO TUTORIAL HELL!
+
+Bora codar, Samuca! Mostre pra gente do que você é capaz! 💪
