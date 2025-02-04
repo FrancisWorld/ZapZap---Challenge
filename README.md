@@ -3,15 +3,6 @@
 ## 🔥 E aí Samuca!
 Chegou seu **terceiro** Desafio Chibas! Dessa vez vamos mergulhar no mundo das APIs REST e fazer uma aplicação MUITO MASSA de processamento de transações financeiras! 
 
-## 📅 Data de Entrega
-[Data a definir]
-
-## ⚠️ ATENÇÃO! EXTREMAMENTE IMPORTANTE! ⚠️
-
-# DOCUMENTAÇÃO É SEU MELHOR AMIGO
-# NÃO CAIA NO TUTORIAL HELL
-# USE A DOCUMENTAÇÃO OFICIAL DO SPRING E STACKOVERFLOW
-
 ## 🎯 O Desafio
 
 Samuca, sua missão (e você vai aceitar!) é criar uma API que:
